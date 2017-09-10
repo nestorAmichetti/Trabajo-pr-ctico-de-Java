@@ -123,9 +123,19 @@ public class GestionReservasDesktop extends JInternalFrame {
 	protected void btnIngresarClicked(){
 		
 		try {
-			this.mapearAJFrame(ctrl.validar(this.mapearDeJFrame()));
+			if(ctrl.validar(this.mapearDeJFrame())!=null)
+			{
+				JOptionPane.showMessageDialog(this, "Bienvenido");
+				
+			} else{
+				
+				JOptionPane.showMessageDialog(this, "Error en ingreso");
+
+			}
+			
+
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, "Error en ingreso");
+			JOptionPane.showMessageDialog(this, e);
 		}
 	}
 	

@@ -12,7 +12,7 @@ public class DataLogin {
 		public Persona login(Persona p) throws Exception{
 			PreparedStatement stmt=null;
 			ResultSet rs=null;
-			
+			Persona persona=null;
 			try {
 				stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 						"select usuario, clave from personas where usuario=? and clave=?");
@@ -20,19 +20,19 @@ public class DataLogin {
 				stmt.setString(2, p.getclave());
 				rs=stmt.executeQuery();
 				if(rs!=null){
-					while(rs.next()){
+					if(rs.next()){
 						if (rs.getString("usuario").equals(p.getUsuario())
 						&& rs.getString("clave").equals(p.getclave())){
-							JOptionPane.showConfirmDialog(null, "Bienvenido");
-							break;
+							persona=p;
 						}
 						
 					}
-				}else {	JOptionPane.showConfirmDialog(null, "Error en nombre de usuario y/o clave");
+				}else {	
+						persona=null;
 					}
 			} catch (SQLException e) {
 				
-				JOptionPane.showMessageDialog(null, "Error en nombre de usuario y/o clave");
+				JOptionPane.showMessageDialog(null, e);
 			}
 			try {
 				if(rs!=null) rs.close();
@@ -43,7 +43,7 @@ public class DataLogin {
 				e.printStackTrace();
 			}
 			
-			return p;
+			return persona;
 			
 		}
 	

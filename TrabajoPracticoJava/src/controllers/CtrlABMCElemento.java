@@ -52,7 +52,7 @@ public class CtrlABMCElemento {
 		return null;
  }	
  
- public ArrayList<NombreElemento> getCategorias() throws Exception{
+ public ArrayList<NombreElemento> getNombreE() throws Exception{
 		return dataN.getAll();
 	}
  

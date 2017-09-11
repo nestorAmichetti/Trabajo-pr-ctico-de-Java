@@ -196,7 +196,7 @@ public class ABMCElementoDesktop extends JInternalFrame {
 	
 	private void loadLists() {
 		try {
-			this.cboElemento.setModel(new DefaultComboBoxModel(this.ctrl.getCategorias().toArray()));
+			this.cboElemento.setModel(new DefaultComboBoxModel(this.ctrl.getNombreE().toArray()));
 			this.cboElemento.setSelectedIndex(-1);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, "Error recuperando Elemento");

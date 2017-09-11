@@ -13,7 +13,7 @@ public class DataCategoria {
 		
 		Statement stmt=null;
 		ResultSet rs=null;
-		ArrayList<Categoria> cats= new ArrayList<Categoria>();
+		ArrayList<Categoria> categoria= new ArrayList<Categoria>();
 		try{
 			stmt = FactoryConexion.getInstancia()
 					.getConn().createStatement();
@@ -23,7 +23,7 @@ public class DataCategoria {
 					Categoria c=new Categoria();
 					c.setId(rs.getInt("id"));
 					c.setDescripcion(rs.getString("categoria"));
-					cats.add(c);
+					categoria.add(c);
 				}
 			}
 		} catch (Exception e){
@@ -38,6 +38,6 @@ public class DataCategoria {
 			e.printStackTrace();
 		}
 		
-		return cats;
+		return categoria;
 	}
 }

@@ -258,7 +258,7 @@ public class ABMCPersonaDesktop extends JInternalFrame {
 		try {
 			ctrl.add(p);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, "Error en alta");
+		JOptionPane.showMessageDialog(this, "Error en alta");
 		}
 		this.txtId.setText(String.valueOf(p.getId()));
 		
@@ -309,6 +309,8 @@ public class ABMCPersonaDesktop extends JInternalFrame {
 		p.setNombre(this.txtNombre.getText());
 		p.setApellido(this.txtApellido.getText());
 		p.setHabilitado(this.chkHabilitado.isSelected());
+		p.setClave(this.txtClave.getText());
+		p.setUsuario(this.txtUsuario.getText());
 		if (cboCategoria.getSelectedIndex() != -1){
 			p.setCategoria((Categoria)cboCategoria.getSelectedItem());
 		}

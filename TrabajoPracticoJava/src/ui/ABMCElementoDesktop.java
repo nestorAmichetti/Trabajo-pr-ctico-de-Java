@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.CtrlABMCElemento;
 import entity.Elemento;
+import entity.NombreElemento;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
@@ -209,6 +210,7 @@ public class ABMCElementoDesktop extends JInternalFrame {
 			ctrl.add(e);
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(this, "Error en alta");
+			
 		}
 		this.txtId.setText(String.valueOf(e.getId()));
 		
@@ -246,6 +248,9 @@ public class ABMCElementoDesktop extends JInternalFrame {
 		e.setNombre(this.txtNombre.getText());
 		e.setFecha(this.txtFecha.getText());
 		e.setHora(this.txtHora.getText());
+		if (cboElemento.getSelectedIndex() != -1){
+			e.setElemento((NombreElemento)cboElemento.getSelectedItem());
+		}
 		return e;
 	}
 	

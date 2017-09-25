@@ -25,9 +25,9 @@ public class CtrlABMCTipoElemento {
 		data.add(t);
 	}
 	
-	public void delete(TipoElemento t)
+	public void delete(TipoElemento t) throws Exception
 	{
-		this.tipoE.remove(t);
+		data.remove(t);
 	}
 	
 	public void update(TipoElemento t) throws Exception

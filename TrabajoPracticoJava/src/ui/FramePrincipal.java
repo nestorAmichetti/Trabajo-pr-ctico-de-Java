@@ -18,9 +18,9 @@ public class FramePrincipal extends JFrame {
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
 
-	/**
-	 * Launch the application.
-	 */
+	
+	public void inicio(){}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

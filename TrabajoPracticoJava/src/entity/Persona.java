@@ -67,7 +67,9 @@ public class Persona {
 		this.habilitado = habilitado;
 	}
 	
-	public Persona(){}
+	public Persona(){
+		
+	}
 	
 	@Override
 	public boolean equals(Object p){

@@ -28,7 +28,7 @@ public class CtrlABMCPersona {
 	}
 	
 	public void delete(Persona p)throws Exception{
-		this.pers.remove(p);
+		dataPer.remove(p);
 	}
 	
 	public void update(Persona p)throws Exception{

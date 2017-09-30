@@ -84,17 +84,6 @@ public class FramePrincipal extends JFrame {
 			}
 		});
 		mnTipoElemento.add(mntmConsultaTipoElemento);
-		
-		JMenu mnReserva = new JMenu("Reserva");
-		menuBar.add(mnReserva);
-		
-		JMenuItem mntmGestinDeReservas = new JMenuItem("Gesti\u00F3n de Reservas");
-		mntmGestinDeReservas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				mnuGestionReservas();
-			}
-		});
-		mnReserva.add(mntmGestinDeReservas);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -102,13 +91,6 @@ public class FramePrincipal extends JFrame {
 		
 		desktopPane = new JDesktopPane();
 		contentPane.add(desktopPane, BorderLayout.CENTER);
-	}
-	
-	
-	protected void mnuGestionReservas() {
-		GestionReservasDesktop g= new GestionReservasDesktop();
-		desktopPane.add(g);
-		g.setVisible(true);
 	}
 
 	protected void mnuElementoClick() {

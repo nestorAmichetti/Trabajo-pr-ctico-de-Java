@@ -16,12 +16,12 @@ public class DataNombreElemento {
 		try{
 			stmt = FactoryConexion.getInstancia()
 					.getConn().createStatement();
-			rs = stmt.executeQuery("select * from elementos");
+			rs = stmt.executeQuery("select * from tipo_elementos");
 			if(rs!=null){
 				while(rs.next()){
 					NombreElemento ne=new NombreElemento();
 					ne.setId(rs.getInt("id"));
-					ne.setDescripcion(rs.getString("nombre"));
+					ne.setDescripcion(rs.getString("nombreCorto"));
 					nombreE.add(ne);
 				}
 			}

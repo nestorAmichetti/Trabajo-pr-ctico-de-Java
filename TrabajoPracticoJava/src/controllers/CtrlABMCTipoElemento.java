@@ -4,20 +4,17 @@ import java.util.ArrayList;
 
 import entity.NombreTipoElemento;
 import entity.TipoElemento;
-import data.DataNombreTipoElemento;
 import data.DataTipoElemento;
 
 public class CtrlABMCTipoElemento {
 	
 	private ArrayList<TipoElemento> tipoE;
 	private DataTipoElemento data;
-	private DataNombreTipoElemento dataN;
 	
 	public CtrlABMCTipoElemento()
 	{
 		tipoE=new ArrayList<TipoElemento>();
 		data=new DataTipoElemento();
-		dataN=new DataNombreTipoElemento();
 	}
 	
 	public void add(TipoElemento t) throws Exception
@@ -53,9 +50,6 @@ public class CtrlABMCTipoElemento {
 		return null;
 	}
 	
-	public ArrayList<NombreTipoElemento> getNombreTipoE() throws Exception{
-		return dataN.getAll();
-	}
 }
 
 

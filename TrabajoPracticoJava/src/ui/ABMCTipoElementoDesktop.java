@@ -30,8 +30,8 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 	private JPanel contentPane;
 	private JTextField txtId;
 	private JTextField txtCantMax;
-	private JComboBox cboNombre;
 	private CtrlABMCTipoElemento ctrl;
+	private JTextField txtNombre;
 
 
 	/**
@@ -63,8 +63,6 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 		
 		JLabel lblAltaTipoElemento = new JLabel("ABMC Tipo Elemento");
 		lblAltaTipoElemento.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JLabel lblNombre = new JLabel("Nombre");
 		
 		JLabel lblCantidadMximaDe = new JLabel("Cantidad m\u00E1xima de reservas");
 		
@@ -105,7 +103,16 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 			}
 		});
 		
-		cboNombre = new JComboBox();
+		JLabel lblNombre = new JLabel("Nombre");
+		
+		txtNombre = new JTextField();
+		txtNombre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		txtNombre.setColumns(10);
+		
+		JLabel lblopcional = new JLabel("(Opcional)");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -117,29 +124,34 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 					.addGap(48)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnAlta)
-							.addGap(18)
-							.addComponent(btnBaja)
-							.addGap(18)
-							.addComponent(btnModificacin)
-							.addGap(18)
-							.addComponent(btnConsulta)
-							.addGap(38))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblId)
+									.addPreferredGap(ComponentPlacement.RELATED, 151, Short.MAX_VALUE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblCantidadMximaDe)
+									.addGap(18)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtCantMax, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(129, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+									.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addComponent(txtCantMax, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblId)
-										.addComponent(lblNombre))
-									.addPreferredGap(ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(cboNombre, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtId, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-							.addContainerGap(129, Short.MAX_VALUE))))
+									.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(lblopcional, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+									.addComponent(btnAlta)
+									.addGap(18)
+									.addComponent(btnBaja)
+									.addGap(18)
+									.addComponent(btnModificacin)
+									.addGap(18)
+									.addComponent(btnConsulta)))
+							.addGap(38))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -150,15 +162,16 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblId)
 						.addComponent(txtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(22)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
-						.addComponent(cboNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblopcional))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCantidadMximaDe)
-						.addComponent(txtCantMax, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+						.addComponent(txtCantMax, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCantidadMximaDe))
+					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAlta)
 						.addComponent(btnBaja)
@@ -172,8 +185,6 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 	
 	private void loadLists() {
 		try {
-			this.cboNombre.setModel(new DefaultComboBoxModel(this.ctrl.getNombreTipoE().toArray()));
-			this.cboNombre.setSelectedIndex(-1);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, "Error recuperando Tipo de Elemento");
 		}
@@ -220,20 +231,16 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 	private void mapearAJFrame(TipoElemento e){
 		this.txtCantMax.setText(String.valueOf(e.getCantMaxReservas()));	
 		this.txtId.setText(String.valueOf(e.getId()));
-		if (e.getTipoElemenento() !=null){
-			this.cboNombre.setSelectedItem(e.getTipoElemenento());
+		this.txtNombre.setText(e.getNombreCorto());
 		}
-	}
+	
 	
 	private TipoElemento mapearDeJFrame(){
 		TipoElemento t=new TipoElemento();
 		if(!this.txtId.getText().isEmpty()){
 			t.setId(Integer.parseInt(this.txtId.getText()));
 		}
-		if (cboNombre.getSelectedIndex() != -1){
-			t.setTipoElemenento((NombreTipoElemento)cboNombre.getSelectedItem());
-
-		}
+		t.setNombreCorto(this.txtNombre.getText());
 		return t;
 	}
 	
@@ -241,5 +248,4 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 		this.mapearAJFrame(e);
 		
 	}
-
 }

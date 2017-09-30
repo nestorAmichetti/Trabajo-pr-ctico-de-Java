@@ -23,9 +23,9 @@ public class CtrlABMCElemento {
 		data.add(e);
 	}
 	
-	public void delete(Elemento e)
+	public void delete(Elemento e) throws Exception
 	{
-		this.elem.remove(e);
+		data.remove(e);
 	}
 	
 	public void update(Elemento e) throws Exception

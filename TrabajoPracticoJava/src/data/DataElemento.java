@@ -86,10 +86,9 @@ public class DataElemento {
 	public void remove(Elemento e) throws Exception{
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		String respuesta=null;
 		try {
 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select usuario, clave from elementos where nombre=?");
+					"select nombre from elementos where nombre=?");
 			stmt.setString(1, e.getNombre());
 			rs=stmt.executeQuery();
 			if(rs!=null){
@@ -108,7 +107,7 @@ public class DataElemento {
 			}
 		} catch (SQLException ed) {
 			
-			JOptionPane.showMessageDialog(null, e);
+			JOptionPane.showMessageDialog(null, "No se puede dar de baja un elemento reservado");
 		}
 		try {
 			if(rs!=null) rs.close();
@@ -127,7 +126,7 @@ public class DataElemento {
 		ResultSet rs=null;
 		try {
 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select p.id, nombre, apellido, dni, habilitado, id_categoria, categoria from elementos e inner join tipo_elementos t on e.id=t.id where nombre=?");
+					"select e.id, fecha, hora, detalle from elementos e inner join tipo_elementos t on e.id=t.id where nombre=?");
 			stmt.setString(1, ele.getNombre());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){

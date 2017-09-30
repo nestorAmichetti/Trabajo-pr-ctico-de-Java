@@ -81,12 +81,12 @@ public class DataTipoElemento {
 		ResultSet rs=null;
 		try {
 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select usuario, clave from tipo_elementos where nombreCorto=?");
+					"select nombreCorto from tipo_elementos where nombreCorto=?");
 			stmt.setString(1, t.getNombreCorto());
 			rs=stmt.executeQuery();
 			if(rs!=null){
 				if(rs.next()){
-					if (rs.getString("usuario").equals(t.getNombreCorto())){
+					if (rs.getString("nombreCorto").equals(t.getNombreCorto())){
 						stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 								"delete from tipo_elementos where nombreCorto=?");
 						stmt.setString(1, t.getNombreCorto());

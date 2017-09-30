@@ -317,7 +317,7 @@ public class ABMCPersonaDesktop extends JInternalFrame {
 		return p;
 	}
 	
-	public void showPersona(Persona p){
+	 public void showPersona(Persona p){
 		this.mapearAJFrame(p);
 		
 	}

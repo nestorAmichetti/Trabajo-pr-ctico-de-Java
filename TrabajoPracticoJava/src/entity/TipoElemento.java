@@ -34,5 +34,21 @@ public class TipoElemento {
 		this.cantMaxReservas = cantMaxReservas;
 	}
 	
+	public TipoElemento(){
+		
+	}
+	
+	@Override
+	public boolean equals(Object t){
+		return (t instanceof TipoElemento) &&
+			 (((TipoElemento)t).getNombreCorto().equals(this.getNombreCorto()));
+					
+
+	}
+
+	@Override
+	public String toString() {
+		return nombreCorto;
+	}
 
 }

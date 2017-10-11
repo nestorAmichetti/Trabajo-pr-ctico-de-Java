@@ -19,7 +19,7 @@ public class DataTipoElemento {
 		try {
 			stmt = FactoryConexion.getInstancia()
 					.getConn().createStatement();
-			rs = stmt.executeQuery("select * from tipo_elementos t inner join elementos e on t.id=e.id_tipo_elemento");
+			rs = stmt.executeQuery("select * from tipo_elementos ");
 			if(rs!=null){
 				while(rs.next()){
 					TipoElemento tipo=new TipoElemento();
@@ -57,7 +57,7 @@ public class DataTipoElemento {
 					"insert into tipo_elementos(nombreCorto, cantMaxReservas) values (?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			stmt.setString(1, t.getTipoElemenento().getDescripcion());
+			stmt.setString(1, t.getNombreCorto());
 			stmt.setInt(2, t.getCantMaxReservas());
 			stmt.executeUpdate();
 			keyResultSet=stmt.getGeneratedKeys();
@@ -119,16 +119,16 @@ public class DataTipoElemento {
 		ResultSet rs=null;
 		try {
 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select p.id, nombreCorto, cantMaxReservas from tipo_elementos t inner join elementos e on t.id=e.id where nombreCorto=?");
+					"select t.id, nombreCorto, cantMaxReservas from tipo_elementos t where nombreCorto=?");
 			stmt.setString(1, tipo.getNombreCorto());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){
-				if (rs.getString("dni").equals(tipo.getNombreCorto()))
+				if (rs.getString("nombreCorto").equals(tipo.getNombreCorto()))
 					
 					t=new TipoElemento();
-					t.setTipoElemenento(new NombreTipoElemento());
+					//t.setTipoElemenento(new NombreTipoElemento());
 					t.setId(rs.getInt("id"));
-					t.setNombreCorto(rs.getString("nombre"));
+					t.setNombreCorto(rs.getString("nombreCorto"));
 					t.setCantMaxReservas(rs.getInt("cantMaxReservas"));
 			}
 			

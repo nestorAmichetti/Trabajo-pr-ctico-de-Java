@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 
-import entity.NombreTipoElemento;
 import entity.TipoElemento;
 import data.DataTipoElemento;
 
@@ -39,15 +38,9 @@ public class CtrlABMCTipoElemento {
 		return data.getAll();
 	}
 	
-	public TipoElemento getByNombre(TipoElemento t)
+	public TipoElemento getByNombre(TipoElemento t) throws Exception
 	{
-		for (int i=0; i < this.tipoE.size(); i++){
-			if(tipoE.get(i).getNombreCorto().equalsIgnoreCase(t.getNombreCorto())) 
-			{
-				return tipoE.get(i);		
-			}
-		}
-		return null;
+		return data.getByNombre(t);
 	}
 	
 }

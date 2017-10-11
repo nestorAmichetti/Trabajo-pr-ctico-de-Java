@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2017 a las 02:59:49
+-- Tiempo de generación: 11-10-2017 a las 23:26:15
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -50,30 +50,26 @@ INSERT INTO `categorias` (`id`, `categoria`) VALUES
 CREATE TABLE IF NOT EXISTS `elementos` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time(6) NOT NULL,
   `detalle` varchar(15) DEFAULT NULL,
   `id_tipo_elemento` int(100) NOT NULL COMMENT '                                                   ',
   PRIMARY KEY (`id`),
   KEY `id_tipo_elemento` (`id_tipo_elemento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `elementos`
 --
 
-INSERT INTO `elementos` (`id`, `nombre`, `fecha`, `hora`, `detalle`, `id_tipo_elemento`) VALUES
-(1, 'windows 10', '2017-08-02', '17:08:00.000000', '', 5),
-(2, 'ubuntu 16.04.3', '2017-03-15', '17:30:45.000000', '', 5),
-(3, 'notebook', '2016-12-22', '10:30:45.000000', '', 3),
-(4, 'netbook', '2017-02-02', '12:30:05.000000', '', 3),
-(5, 'workbench', '2015-10-22', '18:30:00.000000', '', 6),
-(6, 'biblia de C#', '2017-05-13', '22:00:55.000000', '', 2),
-(7, 'smartphone', '2016-12-06', '17:00:10.000000', '', 7),
-(8, 'impresora', '2017-08-01', '20:00:00.000000', '', 1),
-(9, 'Mueble de PC', '2017-09-04', '13:08:22.000000', '', 4),
-(10, 'Word', '2017-08-02', '20:00:00.000000', NULL, 1),
-(11, 'Java 7', '2017-08-02', '10:30:00.000000', NULL, 8);
+INSERT INTO `elementos` (`id`, `nombre`, `detalle`, `id_tipo_elemento`) VALUES
+(1, 'windows 10', '', 5),
+(2, 'ubuntu 16.04.3', '', 5),
+(3, 'notebook', '', 3),
+(4, 'netbook', '', 3),
+(5, 'workbench', '', 6),
+(7, 'smartphone', '', 7),
+(9, 'Mueble de PC', '', 4),
+(10, 'Word', NULL, 1),
+(12, 'sdfsdf', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -112,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `tipo_elementos` (
   `nombreCorto` varchar(15) NOT NULL,
   `cantMaxReservas` int(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `tipo_elementos`
@@ -120,13 +116,13 @@ CREATE TABLE IF NOT EXISTS `tipo_elementos` (
 
 INSERT INTO `tipo_elementos` (`id`, `nombreCorto`, `cantMaxReservas`) VALUES
 (1, 'hardware', 4),
-(2, 'libro', 5),
 (3, 'ord. portatil', 8),
 (4, 'mueble', 4),
 (5, 'SO', 8),
 (6, 'software', 5),
 (7, 'telefono', 2),
-(11, 'libro', 0);
+(13, 'raro', 0),
+(14, 'comun', 2);
 
 --
 -- Restricciones para tablas volcadas
@@ -136,7 +132,7 @@ INSERT INTO `tipo_elementos` (`id`, `nombreCorto`, `cantMaxReservas`) VALUES
 -- Filtros para la tabla `elementos`
 --
 ALTER TABLE `elementos`
-  ADD CONSTRAINT `elementos_ibfk_1` FOREIGN KEY (`id_tipo_elemento`) REFERENCES `elementos` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `elementos_tipo_elementos` FOREIGN KEY (`id_tipo_elemento`) REFERENCES `tipo_elementos` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `personas`

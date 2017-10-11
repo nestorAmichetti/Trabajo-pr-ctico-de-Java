@@ -9,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.CtrlABMCTipoElemento;
 import entity.NombreTipoElemento;
-import entity.Persona;
 import entity.TipoElemento;
 
 import javax.swing.GroupLayout;
@@ -235,17 +234,19 @@ public class ABMCTipoElementoDesktop extends JInternalFrame {
 		}
 	
 	
+	
 	private TipoElemento mapearDeJFrame(){
 		TipoElemento t=new TipoElemento();
 		if(!this.txtId.getText().isEmpty()){
 			t.setId(Integer.parseInt(this.txtId.getText()));
 		}
 		t.setNombreCorto(this.txtNombre.getText());
+		if (!this.txtCantMax.getText().isEmpty()){
+			t.setCantMaxReservas(Integer.parseInt(this.txtCantMax.getText()));
+		}
 		return t;
 	}
 	
-	public void showPersona(TipoElemento e){
-		this.mapearAJFrame(e);
+
 		
-	}
 }

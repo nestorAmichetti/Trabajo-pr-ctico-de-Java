@@ -43,4 +43,16 @@ public class Elemento {
 		this.nombre = nombre;
 	}
 	
+	public Elemento(){
+		
+	}
+	
+	@Override
+	public boolean equals(Object e){
+		return (e instanceof Elemento) &&
+			 (((Elemento)e).getNombre().equals(this.getNombre()));
+					
+
+	}
+	
 }

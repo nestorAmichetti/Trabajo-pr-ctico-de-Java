@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controllers.CtrlABMCElemento;
+import controllers.CtrlABMCTipoElemento;
+import entity.TipoElemento;
 import entity.Elemento;
 import entity.NombreElemento;
 
@@ -229,6 +231,8 @@ public class ABMCElementoDesktop extends JInternalFrame {
 	private void mapearAJFrame(Elemento e) {
 		this.txtId.setText(String.valueOf(e.getId()));
 		this.txtNombre.setText(e.getNombre());
-		
+		if (e.getElemento() !=null){
+			this.cboElemento.setSelectedItem(e.getElemento());
+		}
 	}
 }

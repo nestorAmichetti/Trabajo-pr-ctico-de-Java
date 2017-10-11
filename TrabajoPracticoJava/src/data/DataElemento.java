@@ -59,13 +59,11 @@ public class DataElemento {
 		try {
 			stmt=FactoryConexion.getInstancia().getConn()
 					.prepareStatement(
-					"insert into elementos( nombre, fecha, hora, id_tipo_elemento) values (?,?,?,?)",
+					"insert into elementos( nombre, id_tipo_elemento) values (?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmt.setString(1, e.getNombre());
-			stmt.setString(2, e.getFecha());
-			stmt.setString(3, e.getHora());
-			stmt.setInt(4, e.getElemento().getId());
+			stmt.setInt(2, e.getElemento().getId());
 			stmt.executeUpdate();
 			keyResultSet=stmt.getGeneratedKeys();
 			if(keyResultSet!=null && keyResultSet.next()){
@@ -126,7 +124,7 @@ public class DataElemento {
 		ResultSet rs=null;
 		try {
 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select e.id, fecha, hora, detalle from elementos e inner join tipo_elementos t on e.id=t.id where nombre=?");
+					"select e.id, nombre, id_tipo_elemento from elementos e inner join tipo_elementos t on e.id_tipo_elemento=t.id where nombre=?");
 			stmt.setString(1, ele.getNombre());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){
@@ -136,10 +134,8 @@ public class DataElemento {
 					e.setElemento((new NombreElemento()));
 					e.setId(rs.getInt("id"));
 					e.setNombre(rs.getString("nombre"));
-					e.setFecha(rs.getString("fecha"));
-					e.setHora(rs.getString("hora"));
 					e.getElemento().setId(rs.getInt("id_tipo_elemento"));
-					e.getElemento().setDescripcion((rs.getString("detalle")));
+					
 			}
 			
 		} catch (Exception ed) {
